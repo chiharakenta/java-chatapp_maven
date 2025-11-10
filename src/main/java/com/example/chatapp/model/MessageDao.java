@@ -1,0 +1,37 @@
+package com.example.chatapp.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.chatapp.util.DataStore;
+
+public class MessageDao {
+    private static final String DB_PATH = "db/messages.json";
+    private static MessageDao instance;
+    private int nextId = 1;
+    private List<Message> messages;
+
+    private MessageDao() {};
+
+    public static MessageDao getInstance() {
+        if (instance == null) {
+            instance = DataStore.load(DB_PATH, MessageDao.class);
+        }
+        if (instance == null) {
+            instance = new MessageDao();
+            instance.messages = new ArrayList<Message>();
+        }
+        return instance;
+    }
+
+    public List<Message> findAll() {
+        return this.messages;
+    }
+
+    public void create(String content, String senderName) {
+        Message message = new Message(this.nextId, content, senderName);
+        this.messages.add(message);
+        this.nextId++;
+        DataStore.save(DB_PATH, this);
+    }
+}
