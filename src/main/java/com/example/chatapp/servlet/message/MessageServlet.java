@@ -1,4 +1,4 @@
-package com.example.chatapp.servlet;
+package com.example.chatapp.servlet.message;
 
 import java.io.IOException;
 import java.util.List;

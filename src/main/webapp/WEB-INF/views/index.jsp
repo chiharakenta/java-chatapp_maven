@@ -20,14 +20,36 @@
 
     <ul>
         <c:forEach var="message" items="${messages}">
+            <hr />
             <li>
                 ${message.content} <br />
                 (by ${message.senderName})
-                <form action="/MessageDeleteServlet" method="post">
+                <form action="/MessageDeleteServlet" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="${message.id}" />
                     <button type="submit">削除</button>
                 </form>
             </li>
+            <%-- トグルで開く返信フォーム --%>
+            <details>
+                <summary>返信を見る</summary>
+                <ul>
+                    <c:forEach var="reply" items="${message.replies}">
+                        <li>
+                            ${reply.content} <br />
+                            (by ${reply.senderName})
+                        </li>
+                    </c:forEach>
+                    <hr />
+                    <form action="/ReplyMessageServlet" method="post">
+                        <input type="hidden" name="messageId" value="${message.id}" />
+                        お名前<br />
+                        <input type="text" name="senderName" /><br />
+                        返信内容<br />
+                        <textarea name="content"></textarea><br />
+                        <button type="submit">この内容で返信する</button>
+                    </form>
+                </ul>
+            </details>
         </c:forEach>
     </ul>
 </body>
