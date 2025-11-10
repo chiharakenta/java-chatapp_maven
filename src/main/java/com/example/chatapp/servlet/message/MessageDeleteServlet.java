@@ -1,9 +1,7 @@
 package com.example.chatapp.servlet.message;
 
 import java.io.IOException;
-import java.util.List;
 
-import com.example.chatapp.model.Message;
 import com.example.chatapp.model.MessageDao;
 
 import jakarta.servlet.ServletException;
