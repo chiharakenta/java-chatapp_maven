@@ -33,6 +33,13 @@ public class Message implements Serializable{
         return replies;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
     public void reply(int id, String content, String senderName) {
         ReplyMessage reply = new ReplyMessage(id, content, senderName);
         this.replies.add(reply);

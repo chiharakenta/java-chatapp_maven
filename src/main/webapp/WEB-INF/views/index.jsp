@@ -22,8 +22,10 @@
         <c:forEach var="message" items="${messages}">
             <hr />
             <li>
-                ${message.content} <br />
-                (by ${message.senderName})
+                <a href="/MessageEditServlet?id=${message.id}">
+                    ${message.content} <br />
+                    (by ${message.senderName})
+                </a>
                 <form action="/MessageDeleteServlet" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="${message.id}" />
                     <button type="submit">削除</button>
