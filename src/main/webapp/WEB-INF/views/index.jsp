@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -7,7 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1>チャットアプリ</h1>
+
+    <form action="/MessageServlet" method="post">
+        お名前<br />
+        <input type="text" name="senderName" /><br />
+        メッセージ内容<br />
+        <textarea name="content"></textarea><br />
+        <button type="submit">送信</button>
+    </form>
 
     <ul>
         <c:forEach var="message" items="${messages}">

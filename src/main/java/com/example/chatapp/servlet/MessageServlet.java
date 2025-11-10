@@ -22,4 +22,12 @@ public class MessageServlet extends HttpServlet {
         request.setAttribute("messages", messages);
         request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String content = request.getParameter("content");
+        String senderName = request.getParameter("senderName");
+        messageDao.create(content, senderName);
+        response.sendRedirect(request.getContextPath() + "/MessageServlet");
+    }
 }
