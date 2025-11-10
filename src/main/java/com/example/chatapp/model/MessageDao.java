@@ -34,4 +34,9 @@ public class MessageDao {
         this.nextId++;
         DataStore.save(DB_PATH, this);
     }
+
+    public void delete(int id) {
+        this.messages.removeIf(message -> message.getId() == id);
+        DataStore.save(DB_PATH, this);
+    }
 }

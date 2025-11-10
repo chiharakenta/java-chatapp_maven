@@ -20,7 +20,14 @@
 
     <ul>
         <c:forEach var="message" items="${messages}">
-            <li>${message}</li>
+            <li>
+                ${message.content} <br />
+                (by ${message.senderName})
+                <form action="/MessageDeleteServlet" method="post">
+                    <input type="hidden" name="id" value="${message.id}" />
+                    <button type="submit">削除</button>
+                </form>
+            </li>
         </c:forEach>
     </ul>
 </body>

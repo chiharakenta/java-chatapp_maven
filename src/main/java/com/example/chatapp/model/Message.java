@@ -13,8 +13,15 @@ public class Message implements Serializable{
         this.senderName = senderName;
     }
 
-    @Override
-    public String toString() {
-        return this.id + ": " + this.content + "\n (by " + this.senderName + ")";
+    public int getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getSenderName() {
+        return senderName;
     }
 }
