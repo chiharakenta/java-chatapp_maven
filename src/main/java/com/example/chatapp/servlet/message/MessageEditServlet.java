@@ -19,7 +19,7 @@ public class MessageEditServlet extends HttpServlet {
         int messageId = Integer.parseInt(request.getParameter("id"));
         Message message = messageDao.findById(messageId);
         request.setAttribute("message", message);
-        request.getRequestDispatcher(request.getContextPath() + "/WEB-INF/views/edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request, response);
     }
 
     @Override

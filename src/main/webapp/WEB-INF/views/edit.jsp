@@ -10,7 +10,7 @@
 <body>
     <h1>編集画面</h1>
 
-    <form action="/MessageEditServlet" method="post">
+    <form action="${pageContext.request.contextPath}/MessageEditServlet" method="post">
         <input type="hidden" name="id" value="${message.id}" />
         お名前<br />
         <input type="text" name="senderName" value="${message.senderName}" /><br />

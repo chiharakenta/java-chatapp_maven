@@ -24,6 +24,6 @@ public class ReplyMessageServlet extends HttpServlet {
         if (message != null) {
             messageDao.reply(content, senderName, messageId);
         }
-        response.sendRedirect("/MessageServlet");
+        response.sendRedirect(request.getContextPath() + "/MessageServlet");
     }
 }

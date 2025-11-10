@@ -10,7 +10,7 @@
 <body>
     <h1>チャットアプリ</h1>
 
-    <form action="/MessageServlet" method="post">
+    <form action="${pageContext.request.contextPath}/MessageServlet" method="post">
         お名前<br />
         <input type="text" name="senderName" /><br />
         メッセージ内容<br />
@@ -22,11 +22,11 @@
         <c:forEach var="message" items="${messages}">
             <hr />
             <li>
-                <a href="/MessageEditServlet?id=${message.id}">
+                <a href="${pageContext.request.contextPath}/MessageEditServlet?id=${message.id}">
                     ${message.content} <br />
                     (by ${message.senderName})
                 </a>
-                <form action="/MessageDeleteServlet" method="post" style="display:inline;">
+                <form action="${pageContext.request.contextPath}/MessageDeleteServlet" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="${message.id}" />
                     <button type="submit">削除</button>
                 </form>
@@ -42,7 +42,7 @@
                         </li>
                     </c:forEach>
                     <hr />
-                    <form action="/ReplyMessageServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/ReplyMessageServlet" method="post">
                         <input type="hidden" name="messageId" value="${message.id}" />
                         お名前<br />
                         <input type="text" name="senderName" /><br />
