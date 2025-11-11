@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/ReplyMessageServlet")
-public class ReplyMessageServlet extends HttpServlet {
+@WebServlet("/ReplyServlet")
+public class ReplyServlet extends HttpServlet {
     private ReplyService replyService = ReplyService.getInstance();
 
     @Override

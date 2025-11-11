@@ -42,7 +42,7 @@
                         </li>
                     </c:forEach>
                     <hr />
-                    <form action="${pageContext.request.contextPath}/ReplyMessageServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/ReplyServlet" method="post">
                         <input type="hidden" name="messageId" value="${message.id}" />
                         お名前<br />
                         <input type="text" name="senderName" /><br />
