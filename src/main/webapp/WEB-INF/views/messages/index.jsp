@@ -37,8 +37,10 @@
                 <ul>
                     <c:forEach var="reply" items="${message.replies}">
                         <li>
-                            ${reply.content} <br />
-                            (by ${reply.senderName})
+                            <a href="${pageContext.request.contextPath}/ReplyEditServlet?id=${reply.id}">
+                                ${reply.content} <br />
+                                (by ${reply.senderName})
+                            </a>
                         </li>
                     </c:forEach>
                     <hr />

@@ -30,4 +30,12 @@ public class Reply implements Serializable {
     public String getSenderName() {
         return senderName;
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
 }

@@ -36,6 +36,13 @@ public class ReplyDao {
                 .toList();
     }
 
+    public Reply findById(int id) {
+        return this.replies.stream()
+                .filter(reply -> reply.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
     public void create(int messageId, String content, String senderName) {
         Reply reply = new Reply(this.nextId, messageId, content, senderName);
         this.replies.add(reply);
@@ -46,5 +53,14 @@ public class ReplyDao {
     public void deleteByMessageId(int messageId) {
         this.replies.removeIf(reply -> reply.getMessageId() == messageId);
         DataStore.save(DB_PATH, this);
+    }
+
+    public void update(int id, String content, String senderName) {
+        Reply reply = findById(id);
+        if (reply != null) {
+            reply.setContent(content);
+            reply.setSenderName(senderName);
+            DataStore.save(DB_PATH, this);
+        }
     }
 }
