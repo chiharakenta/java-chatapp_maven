@@ -63,4 +63,9 @@ public class ReplyDao {
             DataStore.save(DB_PATH, this);
         }
     }
+
+    public void deleteById(int id) {
+        this.replies.removeIf(reply -> reply.getId() == id);
+        DataStore.save(DB_PATH, this);
+    }
 }

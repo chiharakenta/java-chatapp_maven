@@ -41,6 +41,10 @@
                                 ${reply.content} <br />
                                 (by ${reply.senderName})
                             </a>
+                            <form action="${pageContext.request.contextPath}/ReplyDeleteServlet" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="${reply.id}" />
+                                <button type="submit">削除</button>
+                            </form>
                         </li>
                     </c:forEach>
                     <hr />

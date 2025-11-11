@@ -32,5 +32,8 @@ public class ReplyService {
     public void update(int id, String content, String senderName) {
         replyDao.update(id, content, senderName);
     }
+    public void delete(int id) {
+        replyDao.deleteById(id);
+    }
     /* データ操作ここまで */
 }
