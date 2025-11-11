@@ -20,7 +20,7 @@ public class MessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MessageWithReply> messages = messageService.findAllWithReply();
         request.setAttribute("messages", messages);
-        request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/messages/index.jsp").forward(request, response);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class MessageEditServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Message message = messageService.findById(id);
         request.setAttribute("message", message);
-        request.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/messages/edit.jsp").forward(request, response);
     }
 
     @Override
