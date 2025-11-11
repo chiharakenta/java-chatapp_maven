@@ -1,8 +1,9 @@
 package com.example.chatapp.servlet.message;
 
 import java.io.IOException;
+
 import com.example.chatapp.model.Message;
-import com.example.chatapp.model.MessageDao;
+import com.example.chatapp.service.MessageService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,22 +13,22 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/MessageEditServlet")
 public class MessageEditServlet extends HttpServlet {
-    private MessageDao messageDao = MessageDao.getInstance();
+    private MessageService messageService = MessageService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int messageId = Integer.parseInt(request.getParameter("id"));
-        Message message = messageDao.findById(messageId);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Message message = messageService.findById(id);
         request.setAttribute("message", message);
         request.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int messageId = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String content = request.getParameter("content");
         String senderName = request.getParameter("senderName");
-        messageDao.update(messageId, content, senderName);
+        messageService.update(id, content, senderName);
         response.sendRedirect(request.getContextPath() + "/MessageServlet");
     }
 }

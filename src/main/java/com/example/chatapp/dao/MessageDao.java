@@ -1,15 +1,15 @@
-package com.example.chatapp.model;
+package com.example.chatapp.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.chatapp.model.Message;
 import com.example.chatapp.util.DataStore;
 
 public class MessageDao {
     private static final String DB_PATH = "db/messages.json";
     private static MessageDao instance;
     private int nextId = 1;
-    private int nextReplyId = 1;
     private List<Message> messages;
 
     private MessageDao() {};
@@ -55,14 +55,5 @@ public class MessageDao {
     public void delete(int id) {
         this.messages.removeIf(message -> message.getId() == id);
         DataStore.save(DB_PATH, this);
-    }
-
-    public void reply(String content, String senderName, int messageId) {
-        Message message = this.findById(messageId);
-        if (message != null) {
-            message.reply(this.nextReplyId, content, senderName);
-            this.nextReplyId++;
-            DataStore.save(DB_PATH, this);
-        }
     }
 }

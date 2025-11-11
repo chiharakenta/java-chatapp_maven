@@ -25,9 +25,8 @@ public class DataStore {
             Gson gson = new Gson();
             return gson.fromJson(fr, classOfT);
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
     
 }
